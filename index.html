@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sarbi Automobile GmbH – Hamburg</title>
+  <meta name="description" content="Sarbi Automobile GmbH in Hamburg. Premium vehicle offers, contact and directions." />
+  <meta name="theme-color" content="#07080b" />
+
+  <style>
+    :root{
+      /* Premium dark + gold */
+      --bg:#07080b;
+      --bg2:#0a0c11;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --line: rgba(255,255,255,.10);
+      --text:#f4f5f7;
+      --muted:#a8b0c2;
+
+      --gold:#d6b36a;
+      --gold2:#f0d9a6;
+      --green:#2dd4bf;
+
+      --radius:18px;
+      --radius2:22px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 28px rgba(0,0,0,.35);
+      --max:1180px;
+
+      --focus: 0 0 0 3px rgba(214,179,106,.18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 560px at 18% -15%, rgba(214,179,106,.22), transparent 60%),
+        radial-gradient(1000px 520px at 90% 0%, rgba(45,212,191,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:16px}
+    .sr{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,8,11,.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar .row{
+      max-width:var(--max); margin:0 auto;
+      padding:12px 16px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid rgba(214,179,106,.22);
+      overflow:hidden;
+      background: linear-gradient(135deg, rgba(214,179,106,.20), rgba(255,255,255,.02));
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .logo img{width:100%; height:100%; object-fit:contain; background:rgba(0,0,0,.18)}
+    .brand h1{
+      margin:0; font-size:14px; line-height:1.1;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin:3px 0 0; font-size:12px; color:var(--muted);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+
+    .controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      font-size:13px;
+      color:var(--text);
+      user-select:none;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px; background:var(--green);
+      box-shadow: 0 0 18px rgba(45,212,191,.40);
+    }
+    .lang{
+      display:inline-flex; gap:2px; padding:5px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .lang button{
+      border:0; background:transparent; color:inherit;
+      font-weight:900; cursor:pointer;
+      padding:7px 10px;
+      border-radius:999px;
+      opacity:.72;
+    }
+    .lang button.active{
+      opacity:1;
+      background: linear-gradient(135deg, rgba(214,179,106,.26), rgba(255,255,255,.04));
+      border: 1px solid rgba(214,179,106,.28);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(900px 320px at 12% 12%, rgba(214,179,106,.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{
+      padding:18px;
+      display:grid;
+      gap:14px;
+    }
+    @media (min-width:980px){
+      .hero-inner{grid-template-columns: 1.55fr .45fr; align-items:start;}
+    }
+    .headline{
+      margin:0;
+      font-size:24px;
+      letter-spacing:.25px;
+      line-height:1.12;
+    }
+    .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      max-width: 72ch;
+    }
+
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      font-weight:900;
+      font-size:14px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .18s ease, border-color .18s ease;
+      min-width: 150px;
+    }
+    .btn:hover{background: rgba(255,255,255,.06)}
+    .btn:active{transform: scale(.98)}
+    .btn:focus{outline:none; box-shadow: var(--focus)}
+    .btn.primary{
+      border-color: rgba(214,179,106,.34);
+      background: linear-gradient(135deg, rgba(214,179,106,.28), rgba(255,255,255,.04));
+    }
+    .btn.gold{
+      border-color: rgba(214,179,106,.55);
+      background: linear-gradient(135deg, rgba(214,179,106,.75), rgba(240,217,166,.35));
+      color:#101114;
+      text-shadow: none;
+    }
+
+    .infoCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding:14px;
+      box-shadow: var(--shadow2);
+    }
+    .infoCard h3{margin:0 0 10px; font-size:15px; letter-spacing:.2px}
+    .kv{display:grid; gap:9px; font-size:14px; color:var(--muted)}
+    .kv b{color:var(--text)}
+    .kv .r{display:flex; justify-content:space-between; gap:10px}
+    .kv .r span{color:var(--text); text-align:right}
+
+    /* Tabs */
+    .tabs{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:8px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .tab{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      border-radius: 999px;
+      padding:10px 14px;
+      font-weight:900;
+      font-size:13px;
+      cursor:pointer;
+      transition: transform .12s ease, background .18s ease, border-color .18s ease;
+    }
+    .tab:hover{background: rgba(255,255,255,.05)}
+    .tab.active{
+      border-color: rgba(214,179,106,.38);
+      background: linear-gradient(135deg, rgba(214,179,106,.22), rgba(255,255,255,.04));
+      box-shadow: 0 0 0 3px rgba(214,179,106,.10);
+    }
+
+    /* Sections */
+    .section{margin-top:16px; display:none; animation: fadeUp .35s ease both;}
+    .section.active{display:block}
+    @keyframes fadeUp{from{opacity:0; transform: translateY(10px)} to{opacity:1; transform: translateY(0)}}
+    .sectionTitle{
+      display:flex; justify-content:space-between; align-items:end; gap:12px;
+      margin: 8px 2px 10px;
+    }
+    .sectionTitle h2{margin:0; font-size:16px; letter-spacing:.2px}
+    .hint{margin:0; color:var(--muted); font-size:13px; line-height:1.4}
+
+    /* Why Sarbi */
+    .whyGrid{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+      margin-bottom: 14px;
+    }
+    @media (min-width:900px){ .whyGrid{grid-template-columns: 1fr 1fr 1fr 1fr;} }
+    .whyCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding:14px;
+      box-shadow: var(--shadow2);
+      transition: transform .16s ease, border-color .18s ease, background .18s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 120px;
+    }
+    .whyCard:before{
+      content:"";
+      position:absolute; inset:-50px -50px auto auto;
+      width:190px; height:190px;
+      background: radial-gradient(circle, rgba(214,179,106,.18), transparent 65%);
+      transform: rotate(18deg);
+    }
+    .whyCard:hover{
+      transform: translateY(-2px);
+      border-color: rgba(214,179,106,.26);
+      background: rgba(255,255,255,.05);
+    }
+    .whyTop{display:flex; align-items:center; gap:10px; position:relative}
+    .icon{
+      width:40px; height:40px;
+      border-radius:14px;
+      border:1px solid rgba(214,179,106,.24);
+      background: linear-gradient(135deg, rgba(214,179,106,.14), rgba(255,255,255,.02));
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      color: var(--gold2);
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .whyCard h3{margin:0; font-size:14px; letter-spacing:.2px; position:relative}
+    .whyCard p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.45; position:relative}
+
+    /* Filters */
+    .filtersWrap{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin: 0 0 10px;
+      flex-wrap:wrap;
+    }
+    .search{
+      flex: 1 1 280px;
+      display:flex; gap:10px; align-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      padding: 10px 12px;
+      box-shadow: var(--shadow2);
+    }
+    .search input{
+      width:100%;
+      border:0;
+      outline:none;
+      background: transparent;
+      color: var(--text);
+      font-weight:700;
+      font-size:14px;
+    }
+    .search input::placeholder{color: rgba(168,176,194,.75)}
+    .filters{
+      display:flex; flex-wrap:wrap; gap:10px;
+      padding:12px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow2);
+    }
+    .chip{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      border-radius: 999px;
+      padding:10px 12px;
+      font-weight:900;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .18s ease, border-color .18s ease;
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .chip:hover{background: rgba(255,255,255,.05)}
+    .chip:active{transform: scale(.98)}
+    .chip.active{
+      border-color: rgba(214,179,106,.45);
+      box-shadow: 0 0 0 3px rgba(214,179,106,.10);
+    }
+    .chip .count{
+      color: rgba(168,176,194,.92);
+      font-weight:900;
+      font-size:12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    /* Offer grid */
+    .gridOffers{display:grid; gap:12px; grid-template-columns: 1fr;}
+    @media (min-width:920px){ .gridOffers{grid-template-columns: 1fr 1fr;} }
+
+    .offer{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      transition: transform .16s ease, border-color .18s ease, background .18s ease;
+      will-change: transform;
+    }
+    .offer:hover{
+      transform: translateY(-2px);
+      border-color: rgba(214,179,106,.22);
+      background: rgba(255,255,255,.04);
+    }
+    .thumb{
+      height:200px;
+      background:
+        radial-gradient(700px 190px at 18% 0%, rgba(214,179,106,.18), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position:relative;
+      overflow:hidden;
+      cursor: zoom-in;
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+    .badge{
+      position:absolute; left:12px; top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      font-size:12px;
+      backdrop-filter: blur(12px);
+    }
+    .price{
+      position:absolute; right:12px; top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(214,179,106,.28);
+      background: rgba(0,0,0,.35);
+      font-size:12px;
+      backdrop-filter: blur(12px);
+      font-weight:900;
+      color: var(--gold2);
+    }
+    .body{padding:14px}
+    .offerTitle{margin:0; font-size:15px; letter-spacing:.2px; line-height:1.25}
+    .desc{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
+    .tags{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px 10px}
+    .tag{
+      display:inline-flex; align-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .actions{margin-top:12px; display:flex; gap:10px}
+    .actions a{flex:1; min-width:0}
+
+    /* Contact / Directions */
+    .grid2{display:grid; gap:12px; grid-template-columns: 1fr;}
+    @media (min-width:980px){ .grid2{grid-template-columns: 1fr 1fr;} }
+    .box{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding:14px;
+      box-shadow: var(--shadow2);
+    }
+    .box h3{margin:0 0 10px; font-size:15px; letter-spacing:.2px}
+    .box p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+    .map{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+    }
+    .map iframe{width:100%; height:360px; border:0; display:block}
+
+    /* Lightbox */
+    .lb{
+      position:fixed; inset:0; z-index:200;
+      background: rgba(0,0,0,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 16px;
+    }
+    .lb.show{display:flex}
+    .lbPanel{
+      width: min(980px, 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,12,17,.86);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.65);
+      overflow:hidden;
+      animation: pop .18s ease both;
+    }
+    @keyframes pop{from{opacity:.6; transform: scale(.985)} to{opacity:1; transform: scale(1)}}
+    .lbTop{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .lbTitle{margin:0; font-size:14px; font-weight:900; letter-spacing:.2px}
+    .lbClose{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .lbBody{padding: 12px}
+    .lbImg{
+      width:100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .lbImg img{width:100%; height:auto; display:block}
+    .lbThumbs{
+      margin-top: 10px;
+      display:flex; gap:10px; overflow:auto; padding-bottom: 6px;
+    }
+    .lbThumb{
+      width:86px; height:60px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      cursor:pointer;
+      flex: 0 0 auto;
+      opacity:.82;
+      transition: opacity .12s ease, transform .12s ease, border-color .12s ease;
+    }
+    .lbThumb:hover{opacity:1; transform: translateY(-1px)}
+    .lbThumb.active{opacity:1; border-color: rgba(214,179,106,.40)}
+    .lbThumb img{width:100%; height:100%; object-fit:cover; display:block}
+
+    footer{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.55;
+    }
+    .hidden{display:none !important}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="row">
+      <div class="brand">
+        <div class="logo" title="Sarbi Automobile">
+          <img src="logo.png" alt="Sarbi Automobile Logo"
+               onerror="this.style.display='none'; this.parentElement.textContent='SA'; this.parentElement.style.color='var(--gold2)'; this.parentElement.style.fontWeight='900';">
+        </div>
+        <div style="min-width:0">
+          <h1>Sarbi Automobile GmbH</h1>
+          <p id="topTagline">Ihr Partner für Gebraucht- und Unfallfahrzeuge.</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="pill"><span class="dot"></span><span id="statusText">Premium Vorschau</span></div>
+        <div class="lang" aria-label="Language">
+          <button id="btnDE" class="active" type="button">DE</button>
+          <button id="btnEN" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <h2 class="headline" id="heroTitle">Fahrzeuge in Hamburg – schnell ansehen, direkt anfragen</h2>
+          <p class="sub" id="heroSub">
+            Premium-Vorschau: Angebote mit Foto, Titel und Kurzinfo. Ein Klick öffnet das Inserat auf mobile.de.
+          </p>
+
+          <div class="cta">
+            <a class="btn gold" href="tel:+494031761865" id="ctaCall">Anrufen</a>
+            <a class="btn primary" href="mailto:info@sarbi.de" id="ctaMail">E-Mail</a>
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://wa.me/491724015398?text=Hallo%20Sarbi%20Automobile%2C%20ich%20habe%20eine%20Frage%20zu%20einem%20Fahrzeug."
+               id="ctaWA">WhatsApp</a>
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps?q=Veringstra%C3%9Fe%20147a%2C%2021107%20Hamburg"
+               id="ctaRoute">Route</a>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Navigation">
+            <button class="tab active" data-tab="offers" type="button" id="tabOffers">Angebote</button>
+            <button class="tab" data-tab="contact" type="button" id="tabContact">Kontakt</button>
+            <button class="tab" data-tab="directions" type="button" id="tabDirections">Anfahrt</button>
+          </div>
+        </div>
+
+        <aside class="infoCard">
+          <h3 id="contactBoxTitle">Kontaktdaten</h3>
+          <div class="kv">
+            <div class="r"><b>Adresse</b><span>Veringstraße 147a<br>21107 Hamburg</span></div>
+            <div class="r"><b>Tel</b><span><a href="tel:+494031761865">+49 40 317 61 865</a></span></div>
+            <div class="r"><b>Mobil</b><span><a href="tel:+491724015398">+49 172 401 5398</a></span></div>
+            <div class="r"><b>E-Mail</b><span><a href="mailto:info@sarbi.de">info@sarbi.de</a></span></div>
+            <div class="r"><b>Web</b><span><a href="https://www.sarbi.de" target="_blank" rel="noopener">www.sarbi.de</a></span></div>
+          </div>
+          <div style="margin-top:12px">
+            <a class="btn gold" target="_blank" rel="noopener" id="dealerBtn">Alle Angebote auf mobile.de</a>
+          </div>
+          <p class="sub" style="margin-top:10px" id="legalNote">
+            Hinweis: Vollautomatische Synchronisation ist später über den offiziellen mobile.de Export möglich.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OFFERS -->
+    <section class="section active" id="section-offers">
+      <div class="sectionTitle">
+        <h2 id="offersTitle">Aktuelle Angebote</h2>
+        <p class="hint" id="offersHint">Foto anklicken = Vorschau • Filter nach Tags • 20 Kacheln (5 gefüllt, 15 Platzhalter)</p>
+      </div>
+
+      <div class="whyGrid" id="whyGrid"></div>
+
+      <div class="filtersWrap">
+        <div class="search" title="Search">
+          <span style="color:rgba(240,217,166,.9); font-weight:900;">⌕</span>
+          <input id="searchInput" type="search" placeholder="Suche nach Modell, Marke, Tag..." />
+        </div>
+        <div class="pill" id="resultPill"><span style="color:var(--gold2); font-weight:900;">•</span><span id="resultText">20 Angebote</span></div>
+      </div>
+
+      <div class="filters" id="filters"></div>
+      <div class="gridOffers" id="offersGrid"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="section-contact">
+      <div class="sectionTitle">
+        <h2 id="contactTitle">Kontakt</h2>
+        <p class="hint" id="contactHint">Telefon, WhatsApp oder E-Mail – schnell erreichbar</p>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3 id="contactBlockTitle">Sarbi Automobile GmbH</h3>
+          <p id="contactBlockText">
+            Veringstraße 147a, 21107 Hamburg<br>
+            Tel: +49 40 317 61 865<br>
+            Mobil: +49 172 401 5398<br>
+            E-Mail: info@sarbi.de
+          </p>
+
+          <div class="cta" style="margin-top:12px">
+            <a class="btn gold" href="tel:+494031761865" id="cCall">Anrufen</a>
+            <a class="btn primary" href="mailto:info@sarbi.de" id="cMail">E-Mail</a>
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://wa.me/491724015398?text=Hallo%20Sarbi%20Automobile%2C%20ich%20habe%20eine%20Frage%20zu%20einem%20Fahrzeug."
+               id="cWA">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 id="aboutTitle">Über uns</h3>
+          <p id="aboutText">
+            Ankauf, Inzahlungnahme, Finanzierung und transparente Beratung. Für Details bitte kurz anrufen oder per WhatsApp schreiben.
+          </p>
+          <p class="hint" style="margin-top:10px" id="aboutExtra">
+            Optional: Öffnungszeiten und weitere Infos können hier ergänzt werden.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTIONS -->
+    <section class="section" id="section-directions">
+      <div class="sectionTitle">
+        <h2 id="dirTitle">Anfahrt</h2>
+        <p class="hint" id="dirHint">Google Maps – direkt Route starten</p>
+      </div>
+
+      <div class="grid2">
+        <div class="map">
+          <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Veringstra%C3%9Fe%20147a%2C%2021107%20Hamburg&output=embed">
+          </iframe>
+        </div>
+
+        <div class="box">
+          <h3 id="dirBlockTitle">Route planen</h3>
+          <p id="dirBlockText">
+            Starte die Navigation in Google Maps – funktioniert auf Handy und PC.
+          </p>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn gold" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/dir/?api=1&destination=Veringstra%C3%9Fe%20147a%2C%2021107%20Hamburg"
+               id="dirBtn">Route starten</a>
+            <a class="btn primary" target="_blank" rel="noopener" id="dirDealerBtn">mobile.de Händlerprofil</a>
+          </div>
+          <p class="hint" style="margin-top:10px" id="parkingNote">
+            Optional: Hinweis zu Parken / Terminvereinbarung.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div id="footerText">
+        Vorschau-Seite. Impressum/Datenschutz können später ergänzt werden.
+      </div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <div class="lbPanel" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div class="lbTop">
+        <p class="lbTitle" id="lbTitle">—</p>
+        <button class="lbClose" id="lbClose" type="button">Schließen</button>
+      </div>
+      <div class="lbBody">
+        <div class="lbImg"><img id="lbMain" alt="" src=""></div>
+        <div class="lbThumbs" id="lbThumbs"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dealer link
+    const DEALER_URL = "https://home.mobile.de/home/index.html?customerId=465650";
+    document.getElementById("dealerBtn").href = DEALER_URL;
+    document.getElementById("dirDealerBtn").href = DEALER_URL;
+
+    // Tabs
+    const tabButtons = document.querySelectorAll(".tab");
+    const sections = {
+      offers: document.getElementById("section-offers"),
+      contact: document.getElementById("section-contact"),
+      directions: document.getElementById("section-directions"),
+    };
+    function setTab(name){
+      tabButtons.forEach(b => b.classList.toggle("active", b.dataset.tab === name));
+      Object.keys(sections).forEach(k => sections[k].classList.toggle("active", k === name));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    tabButtons.forEach(btn => btn.addEventListener("click", () => setTab(btn.dataset.tab)));
+
+    // Data: 5 filled + 15 placeholders
+    const FILLED = [
+      {
+        id: "445418114",
+        url: DEALER_URL + "#des_445418114",
+        price: "9.490 €",
+        titleDE: "Mercedes-Benz C 200 T d G-Tronic Plus TÜV 02.2027",
+        titleEN: "Mercedes-Benz C 200 T d G-Tronic Plus TÜV 02.2027",
+        descDE: "Kombi • EZ 02/2016 • 254.000 km • Diesel • 100 kW (136 PS) • Automatik • Unfallfrei.",
+        descEN: "Wagon • Reg. 02/2016 • 254,000 km • Diesel • 100 kW (136 hp) • Automatic • Accident-free.",
+        tags: ["Diesel","Automatik","Kombi","Unfallfrei","2016"],
+        images: ["images/445418114.jpg"]
+      },
+      {
+        id: "440745040",
+        url: DEALER_URL + "#des_440745040",
+        price: "10.999 €",
+        titleDE: "Jeep Renegade Longitude FWD TÜV 08.2027",
+        titleEN: "Jeep Renegade Longitude FWD TÜV 08.2027",
+        descDE: "SUV • EZ 07/2020 • 171.908 km • Diesel • 88 kW (120 PS) • Schaltgetriebe.",
+        descEN: "SUV • Reg. 07/2020 • 171,908 km • Diesel • 88 kW (120 hp) • Manual.",
+        tags: ["Diesel","Schaltgetriebe","SUV","2020"],
+        images: ["images/440745040.jpg"]
+      },
+      {
+        id: "440017850",
+        url: DEALER_URL + "#des_440017850",
+        price: "8.999 €",
+        titleDE: "Skoda Fabia Combi Ambition *1 HAND* *AUTOMATIK*",
+        titleEN: "Skoda Fabia Combi Ambition *1 OWNER* *AUTOMATIC*",
+        descDE: "Kombi • EZ 05/2015 • 90.500 km • Benzin • 81 kW (110 PS) • Automatik.",
+        descEN: "Wagon • Reg. 05/2015 • 90,500 km • Petrol • 81 kW (110 hp) • Automatic.",
+        tags: ["Benzin","Automatik","Kombi","2015"],
+        images: ["images/440017850.jpg"]
+      },
+      {
+        id: "418025311",
+        url: DEALER_URL + "#des_418025311",
+        price: "7.499 €",
+        titleDE: "Nissan Qashqai Tekna",
+        titleEN: "Nissan Qashqai Tekna",
+        descDE: "SUV • EZ 04/2016 • 116.315 km • Benzin • 85 kW (116 PS) • Automatik • Beschädigt / nicht fahrbereit (laut Anzeige).",
+        descEN: "SUV • Reg. 04/2016 • 116,315 km • Petrol • 85 kW (116 hp) • Automatic • Damaged / not roadworthy (as listed).",
+        tags: ["Benzin","Automatik","SUV","Beschädigt","2016"],
+        images: ["images/418025311.jpg"]
+      },
+      {
+        id: "445272893",
+        url: DEALER_URL + "#des_445272893",
+        price: "15.490 €",
+        titleDE: "BMW 320 d xDrive Advantage TÜV 07.2027 2 HAND ALLRAD",
+        titleEN: "BMW 320 d xDrive Advantage TÜV 07.2027 AWD",
+        descDE: "Kombi • EZ 06/2018 • 121.000 km • Diesel • 140 kW (190 PS) • Automatik • Unfallfahrzeug / beschädigt (laut Anzeige).",
+        descEN: "Wagon • Reg. 06/2018 • 121,000 km • Diesel • 140 kW (190 hp) • Automatic • Accident vehicle / damaged (as listed).",
+        tags: ["Diesel","Automatik","Kombi","Allrad","Unfallfahrzeug","2018"],
+        images: ["images/445272893.jpg"]
+      }
+    ];
+
+    function makePlaceholder(i){
+      return {
+        id: "P" + String(i).padStart(2,"0"),
+        url: DEALER_URL,
+        price: "—",
+        titleDE: "Weitere Angebote auf mobile.de",
+        titleEN: "More offers on mobile.de",
+        descDE: "Klicken Sie hier, um alle Fahrzeuge im Händlerprofil zu sehen.",
+        descEN: "Click here to view all vehicles on the dealer profile.",
+        tags: ["mobile.de"],
+        images: ["images/placeholder.jpg"] // nie musi istnieć – jest fallback
+      };
+    }
+
+    const LISTINGS = [
+      ...FILLED,
+      ...Array.from({length: 15}, (_,idx)=> makePlaceholder(idx+1))
+    ];
+
+    // Why Sarbi content
+    const WHY = {
+      de: [
+        { t:"Ankauf", d:"Wir kaufen Ihr Fahrzeug schnell und fair an.", ic:"A" },
+        { t:"Inzahlungnahme", d:"Inzahlungnahme möglich – sprechen Sie uns an.", ic:"I" },
+        { t:"Finanzierung", d:"Finanzierung auf Anfrage – transparente Konditionen.", ic:"F" },
+        { t:"Garantie", d:"Garantieoptionen je nach Fahrzeug möglich.", ic:"G" },
+      ],
+      en: [
+        { t:"Vehicle Purchase", d:"We buy your vehicle quickly and fairly.", ic:"B" },
+        { t:"Trade-in", d:"Trade-in possible – contact us.", ic:"T" },
+        { t:"Financing", d:"Financing on request – transparent terms.", ic:"F" },
+        { t:"Warranty", d:"Warranty options may be available depending on the vehicle.", ic:"W" },
+      ]
+    };
+
+    // i18n
+    let lang = "de";
+    const T = {
+      de: {
+        topTagline: "Ihr Partner für Gebraucht- und Unfallfahrzeuge.",
+        statusText: "Premium Vorschau",
+        heroTitle: "Fahrzeuge in Hamburg – schnell ansehen, direkt anfragen",
+        heroSub: "Premium-Vorschau: Angebote mit Foto, Titel und Kurzinfo. Ein Klick öffnet das Inserat auf mobile.de.",
+        ctaCall: "Anrufen",
+        ctaMail: "E-Mail",
+        ctaWA: "WhatsApp",
+        ctaRoute: "Route",
+        tabOffers: "Angebote",
+        tabContact: "Kontakt",
+        tabDirections: "Anfahrt",
+        contactBoxTitle: "Kontaktdaten",
+        dealerBtn: "Alle Angebote auf mobile.de",
+        legalNote: "Hinweis: Vollautomatische Synchronisation ist später über den offiziellen mobile.de Export möglich.",
+        offersTitle: "Aktuelle Angebote",
+        offersHint: "Foto anklicken = Vorschau • Filter nach Tags • 20 Kacheln (5 gefüllt, 15 Platzhalter)",
+        view: "Auf mobile.de ansehen",
+        call: "Anrufen",
+        contactTitle: "Kontakt",
+        contactHint: "Telefon, WhatsApp oder E-Mail – schnell erreichbar",
+        aboutTitle: "Über uns",
+        aboutText: "Ankauf, Inzahlungnahme, Finanzierung und transparente Beratung. Für Details bitte kurz anrufen oder per WhatsApp schreiben.",
+        aboutExtra: "Optional: Öffnungszeiten und weitere Infos können hier ergänzt werden.",
+        dirTitle: "Anfahrt",
+        dirHint: "Google Maps – direkt Route starten",
+        dirBlockTitle: "Route planen",
+        dirBlockText: "Starte die Navigation in Google Maps – funktioniert auf Handy und PC.",
+        dirBtn: "Route starten",
+        dirDealerBtn: "mobile.de Händlerprofil",
+        parkingNote: "Optional: Hinweis zu Parken / Terminvereinbarung.",
+        footerText: "Vorschau-Seite. Impressum/Datenschutz können später ergänzt werden.",
+        searchPh: "Suche nach Modell, Marke, Tag...",
+        all: "Alle",
+        results: (n)=> `${n} Angebote`
+      },
+      en: {
+        topTagline: "Your partner for used and accident vehicles.",
+        statusText: "Premium preview",
+        heroTitle: "Vehicles in Hamburg – view quickly, inquire directly",
+        heroSub: "Premium preview: offers with photo, title and short info. One click opens the listing on mobile.de.",
+        ctaCall: "Call",
+        ctaMail: "Email",
+        ctaWA: "WhatsApp",
+        ctaRoute: "Directions",
+        tabOffers: "Offers",
+        tabContact: "Contact",
+        tabDirections: "Directions",
+        contactBoxTitle: "Contact details",
+        dealerBtn: "All offers on mobile.de",
+        legalNote: "Note: Full automatic sync can later be done via the official mobile.de export.",
+        offersTitle: "Current offers",
+        offersHint: "Click photo = preview • Filter by tags • 20 tiles (5 filled, 15 placeholders)",
+        view: "View on mobile.de",
+        call: "Call",
+        contactTitle: "Contact",
+        contactHint: "Phone, WhatsApp or email – quick response",
+        aboutTitle: "About",
+        aboutText: "Vehicle purchase, trade-in, financing and transparent advice. For details, call us or message via WhatsApp.",
+        aboutExtra: "Optional: add opening hours and more info here.",
+        dirTitle: "Directions",
+        dirHint: "Google Maps – start route instantly",
+        dirBlockTitle: "Plan your route",
+        dirBlockText: "Start navigation in Google Maps – works on mobile and desktop.",
+        dirBtn: "Start route",
+        dirDealerBtn: "mobile.de dealer profile",
+        parkingNote: "Optional: parking / appointment note.",
+        footerText: "Preview page. Imprint/privacy can be added later.",
+        searchPh: "Search by model, brand, tag...",
+        all: "All",
+        results: (n)=> `${n} offers`
+      }
+    };
+
+    // Helpers
+    function esc(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+    function norm(s){
+      return String(s ?? "").toLowerCase().trim();
+    }
+
+    // Lightbox
+    const lb = document.getElementById("lb");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbMain = document.getElementById("lbMain");
+    const lbThumbs = document.getElementById("lbThumbs");
+    const lbClose = document.getElementById("lbClose");
+
+    function openLightbox(item){
+      const title = (lang==="de" ? item.titleDE : item.titleEN) || "—";
+      lbTitle.textContent = title;
+      const imgs = (item.images && item.images.length) ? item.images : [];
+      if (!imgs.length){
+        // No images: fallback to close
+        return;
+      }
+      setLBImage(imgs[0]);
+      lbThumbs.innerHTML = imgs.map((src, idx) => `
+        <div class="lbThumb ${idx===0 ? "active":""}" data-src="${esc(src)}" role="button" tabindex="0">
+          <img src="${esc(src)}" alt="">
+        </div>
+      `).join("");
+      lbThumbs.querySelectorAll(".lbThumb").forEach(el=>{
+        el.addEventListener("click", ()=>{
+          lbThumbs.querySelectorAll(".lbThumb").forEach(x=>x.classList.remove("active"));
+          el.classList.add("active");
+          setLBImage(el.getAttribute("data-src"));
+        });
+      });
+      lb.classList.add("show");
+      lb.setAttribute("aria-hidden","false");
+    }
+    function setLBImage(src){
+      lbMain.src = src;
+      lbMain.alt = lbTitle.textContent;
+      lbMain.onerror = ()=> { /* ignore */ };
+    }
+    function closeLightbox(){
+      lb.classList.remove("show");
+      lb.setAttribute("aria-hidden","true");
+      lbMain.src = "";
+      lbThumbs.innerHTML = "";
+    }
+    lbClose.addEventListener("click", closeLightbox);
+    lb.addEventListener("click", (e)=>{ if(e.target === lb) closeLightbox(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeLightbox(); });
+
+    // Rendering + filters
+    const offersGrid = document.getElementById("offersGrid");
+    const filtersEl = document.getElementById("filters");
+    const whyGrid = document.getElementById("whyGrid");
+    const searchInput = document.getElementById("searchInput");
+    const resultText = document.getElementById("resultText");
+
+    let activeTag = "__all__";
+    let query = "";
+
+    function getAllTags(items){
+      const map = new Map();
+      items.forEach(it=>{
+        (it.tags||[]).forEach(t=>{
+          const key = String(t);
+          map.set(key, (map.get(key)||0)+1);
+        });
+      });
+      return Array.from(map.entries()).sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]));
+    }
+
+    function matchItem(it){
+      const q = norm(query);
+      const tagOK = (activeTag==="__all__") || (it.tags||[]).includes(activeTag);
+      if (!tagOK) return false;
+      if (!q) return true;
+
+      const hay = [
+        it.id, it.price,
+        (lang==="de" ? it.titleDE : it.titleEN),
+        (lang==="de" ? it.descDE : it.descEN),
+        ...(it.tags||[])
+      ].join(" ");
+      return norm(hay).includes(q);
+    }
+
+    function renderWhy(){
+      const arr = WHY[lang];
+      whyGrid.innerHTML = arr.map(x=>`
+        <div class="whyCard">
+          <div class="whyTop">
+            <div class="icon">${esc(x.ic)}</div>
+            <h3>${esc(x.t)}</h3>
+          </div>
+          <p>${esc(x.d)}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderFilters(items){
+      const tt = T[lang];
+      const tags = getAllTags(items);
+      filtersEl.innerHTML = `
+        <div class="chip ${activeTag==="__all__" ? "active":""}" data-tag="__all__">
+          ${esc(tt.all)} <span class="count">${items.length}</span>
+        </div>
+        ${tags.map(([tag,count])=>`
+          <div class="chip ${activeTag===tag ? "active":""}" data-tag="${esc(tag)}">
+            ${esc(tag)} <span class="count">${count}</span>
+          </div>
+        `).join("")}
+      `;
+      filtersEl.querySelectorAll(".chip").forEach(chip=>{
+        chip.addEventListener("click", ()=>{
+          activeTag = chip.getAttribute("data-tag");
+          renderAll();
+        });
+      });
+    }
+
+    function renderOffers(){
+      const tt = T[lang];
+      const filtered = LISTINGS.filter(matchItem);
+      resultText.textContent = tt.results(filtered.length);
+
+      offersGrid.innerHTML = filtered.map((x)=>{
+        const title = lang==="de" ? x.titleDE : x.titleEN;
+        const desc = lang==="de" ? x.descDE : x.descEN;
+        const img = (x.images && x.images.length) ? x.images[0] : "";
+        const hasRealImg = !!img && !img.includes("placeholder.jpg");
+        const imgHtml = img ? `<img src="${esc(img)}" alt="${esc(title)}">` : "";
+
+        return `
+          <article class="offer" data-id="${esc(x.id)}">
+            <div class="thumb" role="button" tabindex="0" title="Preview">
+              <span class="badge">ID ${esc(x.id)}</span>
+              <span class="price">${esc(x.price || "—")}</span>
+              ${imgHtml}
+            </div>
+            <div class="body">
+              <h4 class="offerTitle">${esc(title)}</h4>
+              <p class="desc">${esc(desc)}</p>
+              <div class="tags">
+                ${(x.tags||[]).slice(0,8).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}
+              </div>
+              <div class="actions">
+                <a class="btn gold" target="_blank" rel="noopener" href="${esc(x.url)}">${esc(tt.view)}</a>
+                <a class="btn primary" href="tel:+494031761865">${esc(tt.call)}</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // Bind lightbox
+      offersGrid.querySelectorAll(".offer .thumb").forEach((thumbEl, idx)=>{
+        const item = filtered[idx];
+        // open lightbox only if we have actual local image(s)
+        thumbEl.addEventListener("click", ()=>{
+          if (item.images && item.images.length && !item.images[0].includes("placeholder.jpg")){
+            openLightbox(item);
+          } else {
+            window.open(item.url, "_blank", "noopener");
+          }
+        });
+        thumbEl.addEventListener("keydown", (e)=>{
+          if (e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            thumbEl.click();
+          }
+        });
+
+        // image fallback if missing
+        const img = thumbEl.querySelector("img");
+        if (img){
+          img.onerror = ()=>{
+            img.remove();
+            thumbEl.style.cursor = "pointer";
+          };
+        }
+      });
+    }
+
+    function applyLang(){
+      const tt = T[lang];
+      document.documentElement.lang = lang;
+
+      document.getElementById("topTagline").textContent = tt.topTagline;
+      document.getElementById("statusText").textContent = tt.statusText;
+
+      document.getElementById("heroTitle").textContent = tt.heroTitle;
+      document.getElementById("heroSub").textContent = tt.heroSub;
+
+      document.getElementById("ctaCall").textContent = tt.ctaCall;
+      document.getElementById("ctaMail").textContent = tt.ctaMail;
+      document.getElementById("ctaWA").textContent = tt.ctaWA;
+      document.getElementById("ctaRoute").textContent = tt.ctaRoute;
+
+      document.getElementById("tabOffers").textContent = tt.tabOffers;
+      document.getElementById("tabContact").textContent = tt.tabContact;
+      document.getElementById("tabDirections").textContent = tt.tabDirections;
+
+      document.getElementById("contactBoxTitle").textContent = tt.contactBoxTitle;
+      document.getElementById("dealerBtn").textContent = tt.dealerBtn;
+      document.getElementById("legalNote").textContent = tt.legalNote;
+
+      document.getElementById("offersTitle").textContent = tt.offersTitle;
+      document.getElementById("offersHint").textContent = tt.offersHint;
+
+      document.getElementById("contactTitle").textContent = tt.contactTitle;
+      document.getElementById("contactHint").textContent = tt.contactHint;
+
+      document.getElementById("aboutTitle").textContent = tt.aboutTitle;
+      document.getElementById("aboutText").textContent = tt.aboutText;
+      document.getElementById("aboutExtra").textContent = tt.aboutExtra;
+
+      document.getElementById("dirTitle").textContent = tt.dirTitle;
+      document.getElementById("dirHint").textContent = tt.dirHint;
+      document.getElementById("dirBlockTitle").textContent = tt.dirBlockTitle;
+      document.getElementById("dirBlockText").textContent = tt.dirBlockText;
+      document.getElementById("dirBtn").textContent = tt.dirBtn;
+      document.getElementById("dirDealerBtn").textContent = tt.dirDealerBtn;
+      document.getElementById("parkingNote").textContent = tt.parkingNote;
+
+      document.getElementById("footerText").textContent = tt.footerText;
+
+      searchInput.placeholder = tt.searchPh;
+
+      document.getElementById("btnDE").classList.toggle("active", lang==="de");
+      document.getElementById("btnEN").classList.toggle("active", lang==="en");
+    }
+
+    function renderAll(){
+      applyLang();
+      renderWhy();
+      renderFilters(LISTINGS);
+      renderOffers();
+    }
+
+    // Search
+    searchInput.addEventListener("input", ()=>{
+      query = searchInput.value || "";
+      renderOffers();
+    });
+
+    // Lang switch
+    document.getElementById("btnDE").addEventListener("click", ()=>{ lang="de"; renderAll(); });
+    document.getElementById("btnEN").addEventListener("click", ()=>{ lang="en"; renderAll(); });
+
+    renderAll();
+  </script>
+</body>
+</html>
